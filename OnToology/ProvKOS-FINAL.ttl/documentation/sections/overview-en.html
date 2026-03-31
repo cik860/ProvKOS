@@ -1,5 +1,19 @@
 <h2 id="overv" class="list">[Ontology Name]: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
 <span class="markdown">
+<strong>ProvKOS & PROV-O Alignment</strong><br>
+This ontology defines several sub-properties of PROV-O properties to reflect the operational reality of classification systems. The following table summarizes the mapping:<br>
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr><th>ProvKOS Property</th><th>Super-property</th><th>Domain</th><th>Definition</th></tr>
+</thead>
+<tbody>
+<tr><td><code>pk:wasDeprecatedBy</code></td><td><code>prov:wasInvalidatedBy</code></td><td><code>pk:ClassNumber</code></td><td>The existing class number is deprecated, becoming "unassigned."</td></tr>
+<tr><td><code>pk:wasAuthorizedBy</code></td><td><code>prov:wasGeneratedBy</code></td><td><code>pk:ClassNumber</code></td><td>An "unassigned" number is being used to represent a concept.</td></tr>
+<tr><td><code>pk:wasWarrantedBy</code></td><td><code>prov:wasInfluencedBy</code></td><td><code>prov:Activity</code></td><td>The activity was justified by external evidence (Warrant).</td></tr>
+</tbody>
+</table>
+<br>
+The domain restriction on <code>pk:wasDeprecatedBy</code> and <code>pk:wasAuthorizedBy</code> reflects the operational reality of classification systems, where class numbers persist as reusable containers: a deprecated number becomes "unassigned" and may later be re-authorized for a new concept. For labels (<code>skosxl:Label</code>), the standard PROV-O properties apply directly: <code>prov:wasGeneratedBy</code> for newly created labels, and <code>prov:wasInvalidatedBy</code> for labels that are retired. Thesauri and other KOS that operate solely with concepts and labels—without persistent class numbers—can use the standard PROV-O properties throughout, without requiring the ProvKOS sub-properties.<br><br>
 This ontology has the following classes and properties.</span>
 <h4>Classes</h4>
 <ul xmlns:widoco="https://w3id.org/widoco/vocab#"
