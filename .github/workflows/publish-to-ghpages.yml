@@ -1,0 +1,52 @@
+name: Publish ProvKOS to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'ProvKOS-FINAL.ttl'
+      - 'OnToology/ProvKOS-FINAL.ttl/documentation/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Checkout gh-pages branch
+        run: |
+          git fetch origin gh-pages
+          git worktree add /tmp/gh-pages gh-pages
+
+      - name: Copy ProvKOS-FINAL.ttl to gh-pages
+        run: |
+          cp ProvKOS-FINAL.ttl /tmp/gh-pages/ontologies/ProvKOS-FINAL.ttl
+
+      - name: Copy documentation files to gh-pages
+        run: |
+          cp -r OnToology/ProvKOS-FINAL.ttl/documentation/. /tmp/gh-pages/OnToology/ProvKOS-FINAL.ttl/documentation/
+
+      - name: Commit and push to gh-pages
+        run: |
+          cd /tmp/gh-pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+          else
+            git commit -m "Publish updated ProvKOS-FINAL.ttl and documentation"
+            git push origin gh-pages
+          fi
