@@ -81,6 +81,7 @@
 
 ###  https://w3id.org/def/ProvKOS#wasAuthorizedBy
 :wasAuthorizedBy rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasGeneratedBy> ;
                  rdfs:domain :Class_number ;
                  rdfs:range <http://www.w3.org/ns/prov#Activity> ;
                  rdfs:label "wasAuthorizedBy"@en ;
@@ -89,6 +90,7 @@
 
 ###  https://w3id.org/def/ProvKOS#wasDeprecatedBy
 :wasDeprecatedBy rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInvalidatedBy> ;
                  rdfs:domain :Class_number ;
                  rdfs:range <http://www.w3.org/ns/prov#Activity> ;
                  rdfs:label "wasDeprecatedBy"@en ;
@@ -97,6 +99,7 @@
 
 ###  https://w3id.org/def/ProvKOS#wasWarrantedBy
 :wasWarrantedBy rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
                 rdfs:domain <http://www.w3.org/ns/prov#Activity> ;
                 rdfs:range :Warrant ;
                 rdfs:label "wasWarrantedBy"@en ;

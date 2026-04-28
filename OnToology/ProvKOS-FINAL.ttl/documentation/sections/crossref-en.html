@@ -1,4 +1,18 @@
 <h2 id="crossreference" class="list">Cross-reference for [Ontology Name] classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<strong>ProvKOS & PROV-O Alignment</strong><br>
+This ontology defines several sub-properties of PROV-O properties to reflect the operational reality of classification systems. The following table summarizes the mapping:<br>
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr><th>ProvKOS Property</th><th>Super-property</th><th>Domain</th><th>Definition</th></tr>
+</thead>
+<tbody>
+<tr><td><code>pk:wasDeprecatedBy</code></td><td><code>prov:wasInvalidatedBy</code></td><td><code>pk:ClassNumber</code></td><td>The existing class number is deprecated, becoming "unassigned."</td></tr>
+<tr><td><code>pk:wasAuthorizedBy</code></td><td><code>prov:wasGeneratedBy</code></td><td><code>pk:ClassNumber</code></td><td>An "unassigned" number is being used to represent a concept.</td></tr>
+<tr><td><code>pk:wasWarrantedBy</code></td><td><code>prov:wasInfluencedBy</code></td><td><code>prov:Activity</code></td><td>The activity was justified by external evidence (Warrant).</td></tr>
+</tbody>
+</table>
+<br>
+The domain restriction on <code>pk:wasDeprecatedBy</code> and <code>pk:wasAuthorizedBy</code> reflects the operational reality of classification systems, where class numbers persist as reusable containers: a deprecated number becomes "unassigned" and may later be re-authorized for a new concept. For labels (<code>skosxl:Label</code>), the standard PROV-O properties apply directly: <code>prov:wasGeneratedBy</code> for newly created labels, and <code>prov:wasInvalidatedBy</code> for labels that are retired. Thesauri and other KOS that operate solely with concepts and labels—without persistent class numbers—can use the standard PROV-O properties throughout, without requiring the ProvKOS sub-properties.<br><br>
 This section provides details for each class and property defined by [Ontology Name].
 <div xmlns:widoco="https://w3id.org/widoco/vocab#"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -543,6 +557,11 @@ This section provides details for each class and property defined by [Ontology N
       </div>
       <div class="description">
          <dl>
+            <dt>is sub-property of</dt>
+            <dd>
+               <a href="http://www.w3.org/ns/prov#wasGeneratedBy" title="http://www.w3.org/ns/prov#wasGeneratedBy">wasGeneratedBy</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
             <dt>has domain</dt>
             <dd>
                <a href="#Class_number" title="https://w3id.org/def/ProvKOS#Class_number">Class Number</a>
@@ -568,6 +587,11 @@ This section provides details for each class and property defined by [Ontology N
       </div>
       <div class="description">
          <dl>
+            <dt>is sub-property of</dt>
+            <dd>
+               <a href="http://www.w3.org/ns/prov#wasInvalidatedBy" title="http://www.w3.org/ns/prov#wasInvalidatedBy">wasInvalidatedBy</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
             <dt>has domain</dt>
             <dd>
                <a href="#Class_number" title="https://w3id.org/def/ProvKOS#Class_number">Class Number</a>
@@ -593,6 +617,11 @@ This section provides details for each class and property defined by [Ontology N
       </div>
       <div class="description">
          <dl>
+            <dt>is sub-property of</dt>
+            <dd>
+               <a href="http://www.w3.org/ns/prov#wasInfluencedBy" title="http://www.w3.org/ns/prov#wasInfluencedBy">wasInfluencedBy</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
             <dt>has domain</dt>
             <dd>
                <a href="#http://www.w3.org/ns/prov#Activity" title="http://www.w3.org/ns/prov#Activity">activity</a>
