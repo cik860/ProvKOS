@@ -1,0 +1,45 @@
+# STW case study: Truncation of Staatshaftung into Haftung (v9.0)
+# Corresponds to Listings 6 and 7 of the ProvKOS paper (fine-grained warrant chain).
+@prefix ProvKOS: <https://w3id.org/def/ProvKOS#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stw:     <http://zbw.eu/stw/descriptor/> .
+
+# --- Existing STW data ---
+stw:19040-2 a skos:Concept ;
+    skos:prefLabel "Staatshaftung"@de ;
+    skos:prefLabel "Liability of the state"@en ;
+    dcterms:isReplacedBy stw:12576-4 .
+
+stw:12576-4 a skos:Concept ;
+    skos:prefLabel "Haftung"@de ;
+    skos:prefLabel "Liability"@en .
+
+# --- ProvKOS extension ---
+stw:19040-2 prov:wasInvalidatedBy
+    stw:activity_truncation_v9_19040 .
+
+stw:activity_truncation_v9_19040 a ProvKOS:Truncation ;
+    rdfs:label "Merge: Staatshaftung absorbed into Haftung" ;
+    prov:startedAtTime "2014-01-01T00:00:00"^^xsd:dateTime ;
+    prov:endedAtTime "2014-06-30T00:00:00"^^xsd:dateTime ;
+    prov:wasAssociatedWith stw:agent_zbw_editorial ;
+    ProvKOS:wasWarrantedBy stw:warrant_19040_deprecation .
+
+stw:agent_zbw_editorial a prov:Agent ;
+    rdfs:label "ZBW STW Editorial Team" .
+
+# --- Coarse-grained warrant: version-level change report ---
+stw:warrant_stw_v9_changes a ProvKOS:Document ;
+    rdfs:label "STW v9.0 Change Report: Deprecated Concepts" ;
+    ProvKOS:documentDate "2014-06-30"^^xsd:date ;
+    ProvKOS:documentURI <http://zbw.eu/stw/version/9.0/changes> .
+
+# --- Fine-grained warrant: descriptor-level deprecation record ---
+stw:warrant_19040_deprecation a ProvKOS:Document ;
+    rdfs:label "Deprecation record: Staatshaftung (used at last in version 8.14)" ;
+    ProvKOS:cite stw:warrant_stw_v9_changes .

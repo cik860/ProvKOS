@@ -1,0 +1,9 @@
+Validation Report
+Conforms: False
+Results (1):
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:message Literal("Editorial Error: An Expansion activity must generate or authorize at least one entity in the narrower hierarchy.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path [ sh:inversePath prov:wasGeneratedBy ] ]
+	Focus Node: ex:activity_expansion_refugees
+	Result Path: [ sh:inversePath prov:wasGeneratedBy ]
+	Message: Editorial Error: An Expansion activity must generate or authorize at least one entity in the narrower hierarchy.

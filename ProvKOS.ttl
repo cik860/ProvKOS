@@ -143,6 +143,20 @@ prov:endedAtTime rdf:type owl:DatatypeProperty .
 prov:startedAtTime rdf:type owl:DatatypeProperty .
 
 
+###  https://w3id.org/def/ProvKOS#documentDate
+:documentDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Document ;
+    rdfs:range xsd:date ;
+    rdfs:label "documentDate"@en ;
+    skos:definition "The date of an editorial document serving as a warrant."@en .
+
+
+###  https://w3id.org/def/ProvKOS#documentURI
+:documentURI rdf:type owl:AnnotationProperty ;
+    rdfs:label "documentURI"@en ;
+    skos:definition "A dereferenceable URI at which an editorial document serving as a warrant is available."@en .
+
+
 #################################################################
 #    Classes
 #################################################################

@@ -1,0 +1,18 @@
+Validation Report
+Conforms: False
+Results (1):
+Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: ProvKOS:TruncationShape
+	Focus Node: stw:activity_truncation_v9_19040
+	Value Node: stw:activity_truncation_v9_19040
+	Source Constraint: [ sh:message Literal("Data Integrity Error: Entities invalidated by a Truncation must carry 'owl:deprecated true'.") ; sh:prefixes <https://w3id.org/def/ProvKOS#> ; sh:select Literal("
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+            SELECT $this ?entity
+            WHERE {
+                ?entity prov:wasInvalidatedBy $this .
+                FILTER NOT EXISTS { ?entity owl:deprecated true }
+            }
+        ") ]
+	Message: Data Integrity Error: Entities invalidated by a Truncation must carry 'owl:deprecated true'.

@@ -1,0 +1,59 @@
+# DDC case study: "Movement of People" (EPC Exhibit 143-S30.1)
+# Corresponds to the revised Listing 9: Replacement + Truncation sharing one warrant;
+# 304.8 scope change represented with prov:wasInfluencedBy (per R1.6 revision).
+@prefix ProvKOS: <https://w3id.org/def/ProvKOS#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl:  <http://www.w3.org/2008/05/skos-xl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix ddc:     <http://example.org/dewey/> .
+
+# --- Wave 1: Replacement (Label Change) ---
+ddc:cn_304.83-304.89 a ProvKOS:ClassNumber ;
+    skos:notation "304.83-304.89" ;
+    ProvKOS:hasLabel ddc:label_migration ;
+    ProvKOS:hasLabel ddc:label_immigration_specific .
+
+ddc:label_migration a skosxl:Label ;
+    skosxl:literalForm "Migration"@en ;
+    owl:deprecated true ;
+    prov:wasInvalidatedBy ddc:activity_349269 .
+
+ddc:label_immigration_specific a skosxl:Label ;
+    skosxl:literalForm "Immigration to specific continent countries"@en ;
+    prov:wasGeneratedBy ddc:activity_349269 .
+
+ddc:activity_349269 a ProvKOS:Replacement ;
+    prov:startedAtTime "2023-07-27T00:00:00"^^xsd:dateTime ;
+    prov:wasAssociatedWith ddc:agent_ddc_editorial .
+
+# --- Wave 2: Truncation (Merge to Broader) ---
+ddc:cn_304.82 a ProvKOS:ClassNumber ;
+    skos:notation "304.82" ;
+    owl:deprecated true ;
+    ProvKOS:wasDeprecatedBy ddc:activity_349268 .
+
+ddc:cn_304.809 a ProvKOS:ClassNumber ;
+    skos:notation "304.809" ;
+    owl:deprecated true ;
+    ProvKOS:wasDeprecatedBy ddc:activity_349268 .
+
+# 304.8 pre-existed the truncation; its editorial scope changed (R1.6 revision)
+ddc:cn_304.8 a ProvKOS:ClassNumber ;
+    skos:notation "304.8" ;
+    prov:wasInfluencedBy ddc:activity_349268 .
+
+ddc:activity_349268 a ProvKOS:Truncation ;
+    prov:startedAtTime "2023-07-27T00:00:00"^^xsd:dateTime ;
+    prov:wasAssociatedWith ddc:agent_ddc_editorial ;
+    ProvKOS:wasWarrantedBy ddc:warrant_epc_143_s30_1 .
+
+# --- Shared Warrant ---
+ddc:agent_ddc_editorial a prov:Agent ;
+    rdfs:label "DDC Editorial Policy Committee" .
+
+ddc:warrant_epc_143_s30_1 a ProvKOS:Document ;
+    rdfs:label "EPC Exhibit 143-S30.1: Movement of People" ;
+    ProvKOS:documentDate "2023-07-27"^^xsd:date .

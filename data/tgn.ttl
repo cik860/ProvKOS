@@ -1,0 +1,90 @@
+# TGN case study: variant-name additions on record 7021009 (Gulf of Mexico)
+# Corresponds to the revised Listing 2 of the ProvKOS paper.
+@prefix ProvKOS: <https://w3id.org/def/ProvKOS#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl:  <http://www.w3.org/2008/05/skos-xl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix tgn:     <http://example.org/tgn/> .
+
+# --- Entity ---
+tgn:7021009 a prov:Entity ;
+    skos:notation 7021009 ;
+    ProvKOS:hasLabel tgn:Gulf_of_Mexico ,
+                tgn:Gulf_of_America ,
+                tgn:Gulf_of_New_Spain .
+
+tgn:Gulf_of_Mexico a skosxl:Label ;
+    skosxl:literalForm "Gulf of Mexico"@en .
+
+tgn:Gulf_of_America a skosxl:Label ;
+    skosxl:literalForm "Gulf of America"@en ;
+    prov:wasGeneratedBy tgn:Vocab_addition_2 ;
+    prov:wasRevisionOf tgn:Gulf_of_Mexico .
+
+tgn:Gulf_of_New_Spain a skosxl:Label ;
+    skosxl:literalForm "Gulf of New Spain"@en ;
+    prov:wasGeneratedBy tgn:Vocab_addition_1 ;
+    prov:wasRevisionOf tgn:Gulf_of_Mexico .
+
+# --- Activity ---
+tgn:Vocab_addition_1 a prov:Activity ;
+    rdfs:label "Variant addition for Gulf of New Spain" ;
+    prov:wasAssociatedWith tgn:Getty ;
+    ProvKOS:wasWarrantedBy tgn:KOS_Concept_3_New_Spain .
+
+tgn:Vocab_addition_2 a prov:Activity ;
+    rdfs:label "Variant addition for Gulf of America" ;
+    prov:wasAssociatedWith tgn:Getty ;
+    ProvKOS:wasWarrantedBy tgn:KOS_Concept_1_America .
+
+tgn:Getty a prov:Agent ;
+    rdfs:label "Getty" .
+
+# --- Warrant subclass: Concept ---
+tgn:KOS_Concept_1_America a skos:Concept ;
+    rdfs:label "America" ;
+    ProvKOS:cite tgn:GNIS_Digital_Gazetteer ,
+            tgn:Library_of_Congress_Authorities_online_2002 ,
+            tgn:NGA_NIMA_database_2003 ,
+            tgn:Zhuang_Google_Maps_Users_NYT_2025 .
+
+tgn:KOS_Concept_2_Mexico a skos:Concept ;
+    rdfs:label "Mexico" ;
+    ProvKOS:cite tgn:Encyclopedia_Britannica_Online ,
+            tgn:GNIS_Digital_Gazetteer ,
+            tgn:AAA_Louisiana_Mississippi_1993 ,
+            tgn:Kinnard_Gulf_of_Mexico_Columbian_2025 ,
+            tgn:NGA_NIMA_database_2003 ,
+            tgn:Websters_Geographical_Dictionary_1988 .
+
+tgn:KOS_Concept_3_New_Spain a skos:Concept ;
+    rdfs:label "New Spain" ;
+    ProvKOS:cite tgn:GNIS_Digital_Gazetteer .
+
+# --- Warrant subclass: ConceptScheme ---
+tgn:GNIS_Digital_Gazetteer a skos:ConceptScheme ;
+    rdfs:label "GNIS Digital Gazetteer" .
+
+tgn:Library_of_Congress_Authorities_online_2002 a skos:ConceptScheme ;
+    rdfs:label "Library of Congress Authorities online (2002-)" .
+
+tgn:Websters_Geographical_Dictionary_1988 a skos:ConceptScheme ;
+    rdfs:label "Webster's Geographical Dictionary (1988)" .
+
+# --- Warrant subclass: Literature ---
+tgn:Zhuang_Google_Maps_Users_NYT_2025 a ProvKOS:Literature ;
+    rdfs:label "Zhuang, Google Maps Users, New York Times (2025)" .
+
+tgn:Kinnard_Gulf_of_Mexico_Columbian_2025 a ProvKOS:Literature ;
+    rdfs:label "Kinnard, Gulf of Mexico, The Columbian (2025)" .
+
+tgn:NGA_NIMA_database_2003 a ProvKOS:Literature ;
+    rdfs:label "NGA/NIMA database (2003-)" .
+
+tgn:Encyclopedia_Britannica_Online a ProvKOS:Literature ;
+    rdfs:label "Encyclopedia Britannica Online" .
+
+tgn:AAA_Louisiana_Mississippi_1993 a ProvKOS:Literature ;
+    rdfs:label "AAA Louisiana-Mississippi (1993)" .

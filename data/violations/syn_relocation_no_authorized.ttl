@@ -1,0 +1,65 @@
+# Synthetic data exercising Relocation and Expansion, the two typed activities
+# not covered by the three case studies. Examples follow the definitions in the
+# paper: Relocation of "Cross dressing" (306.778 -> 391.68, DDC EPC 144-S30.1
+# scenario from prior work) and Expansion of "Refugees" (325.21 -> 325.214).
+@prefix ProvKOS: <https://w3id.org/def/ProvKOS#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl:  <http://www.w3.org/2008/05/skos-xl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix ex:      <http://example.org/dewey/> .
+
+# --- Relocation: concept moved from 306.778 to 391.68 ---
+ex:cn_306.778 a ProvKOS:ClassNumber ;
+    skos:notation "306.778" ;
+    owl:deprecated true ;
+    ProvKOS:hasLabel ex:label_transvestism ;
+    ProvKOS:wasDeprecatedBy ex:activity_relocation_349210 .
+
+ex:cn_391.68 a ProvKOS:ClassNumber ;
+    skos:notation "391.68" ;
+    ProvKOS:hasLabel ex:label_cross_dressing .
+
+ex:label_transvestism a skosxl:Label ;
+    skosxl:literalForm "Transvestism"@en .
+
+ex:label_cross_dressing a skosxl:Label ;
+    skosxl:literalForm "Cross dressing"@en .
+
+ex:activity_relocation_349210 a ProvKOS:Relocation ;
+    prov:wasAssociatedWith ex:agent_ddc_editorial ;
+    ProvKOS:wasWarrantedBy ex:warrant_epc_144_s30_1 .
+
+# --- Expansion: 325.21 Refugees expanded to 325.214 ---
+ex:cn_325.21 a ProvKOS:ClassNumber ;
+    skos:notation "325.21" ;
+    ProvKOS:hasLabel ex:label_refugees ;
+    prov:wasInfluencedBy ex:activity_expansion_refugees .
+
+ex:cn_325.214 a ProvKOS:ClassNumber ;
+    skos:notation "325.214" ;
+    ProvKOS:hasLabel ex:label_refugees_destination ;
+    ProvKOS:wasAuthorizedBy ex:activity_expansion_refugees .
+
+ex:label_refugees a skosxl:Label ;
+    skosxl:literalForm "Refugees"@en .
+
+ex:label_refugees_destination a skosxl:Label ;
+    skosxl:literalForm "Refugees by area of destination"@en ;
+    prov:wasGeneratedBy ex:activity_expansion_refugees .
+
+ex:activity_expansion_refugees a ProvKOS:Expansion ;
+    prov:wasAssociatedWith ex:agent_ddc_editorial ;
+    ProvKOS:wasWarrantedBy ex:warrant_epc_synthetic .
+
+# --- Agents and warrants ---
+ex:agent_ddc_editorial a prov:Agent ;
+    rdfs:label "DDC Editorial Policy Committee" .
+
+ex:warrant_epc_144_s30_1 a ProvKOS:Document ;
+    rdfs:label "EPC Exhibit 144-S30.1" .
+
+ex:warrant_epc_synthetic a ProvKOS:Document ;
+    rdfs:label "Synthetic expansion proposal" .

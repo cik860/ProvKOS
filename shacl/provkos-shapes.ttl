@@ -1,0 +1,130 @@
+# ProvKOS SHACL shapes — editorial constraints for the four typed activities.
+#
+# These shapes are validated with RDFS inference over the ProvKOS ontology
+# (pySHACL: inference='rdfs', ont_graph=ProvKOS.ttl). Inference makes the
+# profile's sub-property alignments effective during validation:
+#   ProvKOS:wasDeprecatedBy ⊑ prov:wasInvalidatedBy
+#   ProvKOS:wasAuthorizedBy ⊑ prov:wasGeneratedBy
+# so a single constraint written against the PROV-O super-property covers both
+# classification systems (which use the ProvKOS sub-properties) and thesauri
+# (which use the PROV-O properties directly) — the adaptation described in
+# Section 5 of the paper, realized without duplicating shapes.
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix ProvKOS: <https://w3id.org/def/ProvKOS#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+
+# ---------------------------------------------------------------
+# Shared constraint: every typed editorial activity must be warranted
+# ---------------------------------------------------------------
+ProvKOS:WarrantedActivityShape a sh:NodeShape ;
+    sh:targetClass ProvKOS:Truncation , ProvKOS:Replacement ,
+                   ProvKOS:Relocation , ProvKOS:Expansion ;
+    sh:property [
+        sh:path ProvKOS:wasWarrantedBy ;
+        sh:minCount 1 ;
+        sh:class ProvKOS:Warrant ;
+        sh:message "Editorial Error: A typed editorial activity must be justified by at least one Warrant via ProvKOS:wasWarrantedBy." ;
+    ] .
+
+# ---------------------------------------------------------------
+# Truncation: >=1 invalidated entity, each carrying owl:deprecated true
+# ---------------------------------------------------------------
+ProvKOS:TruncationShape a sh:NodeShape ;
+    sh:targetClass ProvKOS:Truncation ;
+    sh:property [
+        sh:path [ sh:inversePath prov:wasInvalidatedBy ] ;
+        sh:minCount 1 ;
+        sh:message "Editorial Error: A Truncation activity must invalidate at least one entity (via ProvKOS:wasDeprecatedBy or prov:wasInvalidatedBy)." ;
+    ] ;
+    sh:sparql [
+        sh:message "Data Integrity Error: Entities invalidated by a Truncation must carry 'owl:deprecated true'." ;
+        sh:prefixes ProvKOS: ;
+        sh:select """
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+            SELECT $this ?entity
+            WHERE {
+                ?entity prov:wasInvalidatedBy $this .
+                FILTER NOT EXISTS { ?entity owl:deprecated true }
+            }
+        """ ;
+    ] .
+
+# ---------------------------------------------------------------
+# Replacement: paired invalidation and generation of labels
+# ---------------------------------------------------------------
+ProvKOS:ReplacementShape a sh:NodeShape ;
+    sh:targetClass ProvKOS:Replacement ;
+    sh:property [
+        sh:path [ sh:inversePath prov:wasInvalidatedBy ] ;
+        sh:minCount 1 ;
+        sh:message "Editorial Error: A Replacement activity must invalidate the label being replaced." ;
+    ] ;
+    sh:property [
+        sh:path [ sh:inversePath prov:wasGeneratedBy ] ;
+        sh:minCount 1 ;
+        sh:message "Editorial Error: A Replacement activity must generate the replacing label." ;
+    ] ;
+    sh:sparql [
+        sh:message "Data Integrity Error: Labels invalidated by a Replacement must carry 'owl:deprecated true'." ;
+        sh:prefixes ProvKOS: ;
+        sh:select """
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+            SELECT $this ?entity
+            WHERE {
+                ?entity prov:wasInvalidatedBy $this .
+                FILTER NOT EXISTS { ?entity owl:deprecated true }
+            }
+        """ ;
+    ] .
+
+# ---------------------------------------------------------------
+# Relocation: source deprecated and target (re)authorized
+# ---------------------------------------------------------------
+ProvKOS:RelocationShape a sh:NodeShape ;
+    sh:targetClass ProvKOS:Relocation ;
+    sh:property [
+        sh:path [ sh:inversePath prov:wasInvalidatedBy ] ;
+        sh:minCount 1 ;
+        sh:message "Editorial Error: A Relocation activity must deprecate the source class number." ;
+    ] ;
+    sh:property [
+        sh:path [ sh:inversePath prov:wasGeneratedBy ] ;
+        sh:minCount 1 ;
+        sh:message "Editorial Error: A Relocation activity must authorize the target class number (ProvKOS:wasAuthorizedBy)." ;
+    ] ;
+    sh:sparql [
+        sh:message "Data Integrity Error: Class numbers deprecated by a Relocation must carry 'owl:deprecated true'." ;
+        sh:prefixes ProvKOS: ;
+        sh:select """
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+            SELECT $this ?entity
+            WHERE {
+                ?entity prov:wasInvalidatedBy $this .
+                FILTER NOT EXISTS { ?entity owl:deprecated true }
+            }
+        """ ;
+    ] .
+
+# ---------------------------------------------------------------
+# Expansion: at least one narrower entity brought into use
+# ---------------------------------------------------------------
+ProvKOS:ExpansionShape a sh:NodeShape ;
+    sh:targetClass ProvKOS:Expansion ;
+    sh:property [
+        sh:path [ sh:inversePath prov:wasGeneratedBy ] ;
+        sh:minCount 1 ;
+        sh:message "Editorial Error: An Expansion activity must generate or authorize at least one entity in the narrower hierarchy." ;
+    ] .
+
+# SPARQL prefix declarations for sh:prefixes
+ProvKOS: sh:declare [
+    sh:prefix "prov" ;
+    sh:namespace "http://www.w3.org/ns/prov#"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+] , [
+    sh:prefix "owl" ;
+    sh:namespace "http://www.w3.org/2002/07/owl#"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+] .
