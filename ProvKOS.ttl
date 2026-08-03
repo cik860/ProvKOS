@@ -1,0 +1,259 @@
+@prefix : <https://w3id.org/def/ProvKOS#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@base <https://w3id.org/def/ProvKOS#> .
+
+<https://w3id.org/def/ProvKOS> rdf:type owl:Ontology ;
+    owl:imports <http://www.w3.org/2004/02/skos/core> ,
+                <http://www.w3.org/ns/prov-o-20130430> ;
+    dcterms:creator "Inkyung Choi" ,
+                    "Jessica Yi-Yun Cheng" ;
+    dcterms:title "ProvKOS: An Application Profile for Documenting Provenance in Knowledge Organization Systems"@en ;
+    owl:versionInfo "1.1" ;
+    rdfs:comment "ProvKOS extends SKOS and PROV-O to represent the provenance of editorial activities in Knowledge Organization Systems (KOS): typed change activities, warrant structures, and the relationships among entities, activities, agents, and warrants. Revised in response to peer review (2026): class renamed to ProvKOS:ClassNumber; domain of ProvKOS:hasLabel broadened to prov:Entity; explicit PROV-O sub-property alignments; example individuals moved to separate data files."@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty ;
+    rdfs:domain skos:Concept .
+
+
+###  http://www.w3.org/ns/prov#generated
+prov:generated rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#invalidated
+prov:invalidated rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+prov:wasAssociatedWith rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#wasAttributedTo
+prov:wasAttributedTo rdf:type owl:ObjectProperty ;
+    rdfs:domain prov:Entity .
+
+
+###  http://www.w3.org/ns/prov#wasGeneratedBy
+prov:wasGeneratedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+prov:wasInfluencedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#wasInvalidatedBy
+prov:wasInvalidatedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#wasRevisionOf
+prov:wasRevisionOf rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/def/ProvKOS#cite
+:cite rdf:type owl:ObjectProperty ;
+    rdfs:domain :Warrant ;
+    rdfs:range :Warrant ;
+    rdfs:label "cite"@en ;
+    skos:definition "A Warrant cites another Warrant, enabling the construction of warrant chains across heterogeneous evidence types (e.g., a Document citing a ConceptScheme that cites Literature)."@en .
+
+
+###  https://w3id.org/def/ProvKOS#hasLabel
+:hasLabel rdf:type owl:ObjectProperty ;
+    rdfs:domain prov:Entity ;
+    rdfs:range skosxl:Label ;
+    rdfs:label "hasLabel"@en ;
+    skos:definition "A KOS entity (e.g., a class number in a classification system, or an authority record in a compiled vocabulary) has one or more associated human-readable labels. Preferred and alternative labels can be distinguished using skosxl:prefLabel and skosxl:altLabel for tracking changes to all types of labels."@en .
+
+
+###  https://w3id.org/def/ProvKOS#wasAuthorizedBy
+:wasAuthorizedBy rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasGeneratedBy ;
+    rdfs:domain :ClassNumber ;
+    rdfs:range prov:Activity ;
+    rdfs:label "wasAuthorizedBy"@en ;
+    skos:definition "An 'unassigned' class number is being used to represent a concept. Specific to classification systems in which class numbers persist as reusable containers."@en .
+
+
+###  https://w3id.org/def/ProvKOS#wasDeprecatedBy
+:wasDeprecatedBy rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasInvalidatedBy ;
+    rdfs:domain :ClassNumber ;
+    rdfs:range prov:Activity ;
+    rdfs:label "wasDeprecatedBy"@en ;
+    skos:definition "The existing class number is deprecated, becoming 'unassigned'. Specific to classification systems in which class numbers persist as reusable containers."@en .
+
+
+###  https://w3id.org/def/ProvKOS#wasWarrantedBy
+:wasWarrantedBy rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasInfluencedBy ;
+    rdfs:domain prov:Activity ;
+    rdfs:range :Warrant ;
+    rdfs:label "wasWarrantedBy"@en ;
+    skos:definition "The Activity was performed based on an editorial Warrant."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/2008/05/skos-xl#literalForm
+skosxl:literalForm rdf:type owl:DatatypeProperty ;
+    rdfs:domain skosxl:Label ;
+    rdfs:range xsd:string ;
+    rdfs:label "literalForm"@en .
+
+
+###  http://www.w3.org/ns/prov#endedAtTime
+prov:endedAtTime rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/ns/prov#startedAtTime
+prov:startedAtTime rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class ;
+    rdfs:subClassOf :Warrant ;
+    skos:definition "Within the scope of this application profile, any SKOS concept can serve as a warrant for editorial decision making (e.g., a concept in an external vocabulary such as Homosaurus supporting a label change)."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class ;
+    rdfs:subClassOf :Warrant ;
+    skos:definition "Within the scope of this application profile, any SKOS concept scheme can serve as a warrant for editorial decision making (e.g., ICD-11 or a national authority file supporting a change)."@en .
+
+
+###  http://www.w3.org/2008/05/skos-xl#Label
+skosxl:Label rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    owl:disjointWith :ClassNumber ;
+    rdfs:label "Label"@en ;
+    skos:definition "The class skosxl:Label is a special class of lexical entities. An instance of the class skosxl:Label is a resource and may be named with a URI. An instance of the class skosxl:Label has a single literal form. (from SKOS-XL)"@en .
+
+
+###  http://www.w3.org/ns/prov#Activity
+prov:Activity rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+
+###  http://www.w3.org/ns/prov#Agent
+prov:Agent rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+
+###  http://www.w3.org/ns/prov#Organization
+prov:Organization rdf:type owl:Class ;
+    rdfs:subClassOf prov:Agent .
+
+
+###  http://www.w3.org/ns/prov#Person
+prov:Person rdf:type owl:Class ;
+    rdfs:subClassOf prov:Agent .
+
+
+###  http://www.w3.org/ns/prov#SoftwareAgent
+prov:SoftwareAgent rdf:type owl:Class ;
+    rdfs:subClassOf prov:Agent .
+
+
+###  https://w3id.org/def/ProvKOS#ClassNumber
+:ClassNumber rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Class Number"@en ;
+    skos:definition "ClassNumber is a numeric or alphanumeric notation to represent a concept. A concept is defined as a unit of thought, specific ideas or meanings established within a KOS. ClassNumber is assignable to classify information resources. An instance of ClassNumber may be named with a URI."@en .
+
+
+###  https://w3id.org/def/ProvKOS#Document
+:Document rdf:type owl:Class ;
+    rdfs:subClassOf :Warrant ;
+    rdfs:label "Document"@en ;
+    skos:definition "Documents to record editorial process which include proposals of changes, discussions of proposals, and suggested changes and their impacts."@en .
+
+
+###  https://w3id.org/def/ProvKOS#Expansion
+:Expansion rdf:type owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "Expansion"@en ;
+    skos:definition "An expansion is when a concept is extended and the class number moves down to the narrower hierarchy."@en .
+
+
+###  https://w3id.org/def/ProvKOS#Literature
+:Literature rdf:type owl:Class ;
+    rdfs:subClassOf :Warrant ;
+    rdfs:label "Literature"@en ;
+    skos:definition "Citable literature providing evidence warranted for editorial decision making."@en .
+
+
+###  https://w3id.org/def/ProvKOS#Relocation
+:Relocation rdf:type owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "Relocation"@en ;
+    skos:definition "A relocation is moving a concept from a class number to another class number; this movement is outside of the hierarchical tree."@en .
+
+
+###  https://w3id.org/def/ProvKOS#Replacement
+:Replacement rdf:type owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "Replacement"@en ;
+    skos:definition "A replacement is having a label replaced with another label."@en .
+
+
+###  https://w3id.org/def/ProvKOS#Truncation
+:Truncation rdf:type owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "Truncation"@en ;
+    skos:altLabel "Discontinuation"@en ;
+    skos:definition "A truncation is having a concept generalized, thus the class number moves up to the broader hierarchy."@en .
+
+
+###  https://w3id.org/def/ProvKOS#Warrant
+:Warrant rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "Warrant"@en ;
+    skos:definition "Any identifiable sources providing evidence warranted for editorial decision making."@en .
+
+
+###  Example individuals are maintained separately in the data/ directory
+###  (one file per case study: TGN, STW, DDC), so that the ontology (TBox)
+###  remains a clean, importable specification.
