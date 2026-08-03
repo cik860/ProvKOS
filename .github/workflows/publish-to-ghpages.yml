@@ -1,17 +1,15 @@
 name: Publish ProvKOS to GitHub Pages
-
 on:
   push:
     branches:
       - main
     paths:
-      - 'ProvKOS-FINAL.ttl'
-      - 'OnToology/ProvKOS-FINAL.ttl/documentation/**'
+      - 'ProvKOS.ttl'
+      - 'index.html'
+      - 'OnToology/ProvKOS.ttl/documentation/**'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -21,25 +19,27 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Checkout gh-pages branch
         run: |
           git fetch origin gh-pages
           git worktree add /tmp/gh-pages gh-pages
-
-      - name: Copy ProvKOS-FINAL.ttl to gh-pages
+      - name: Copy ontology to gh-pages
         run: |
-          cp ProvKOS-FINAL.ttl /tmp/gh-pages/ontologies/ProvKOS-FINAL.ttl
-
-      - name: Copy documentation files to gh-pages
+          mkdir -p /tmp/gh-pages/ontologies
+          cp ProvKOS.ttl /tmp/gh-pages/ontologies/ProvKOS.ttl
+      - name: Copy index and documentation to gh-pages
         run: |
-          cp -r OnToology/ProvKOS-FINAL.ttl/documentation/. /tmp/gh-pages/OnToology/ProvKOS-FINAL.ttl/documentation/
-
+          cp index.html /tmp/gh-pages/index.html
+          mkdir -p /tmp/gh-pages/OnToology/ProvKOS.ttl/documentation
+          cp -r OnToology/ProvKOS.ttl/documentation/. /tmp/gh-pages/OnToology/ProvKOS.ttl/documentation/
+      - name: Remove stale ProvKOS-FINAL artifacts
+        run: |
+          rm -f /tmp/gh-pages/ontologies/ProvKOS-FINAL.ttl
+          rm -rf /tmp/gh-pages/OnToology/ProvKOS-FINAL.ttl
       - name: Commit and push to gh-pages
         run: |
           cd /tmp/gh-pages
@@ -47,6 +47,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to publish."
           else
-            git commit -m "Publish updated ProvKOS-FINAL.ttl and documentation"
+            git commit -m "Publish updated ProvKOS.ttl and documentation"
             git push origin gh-pages
           fi
