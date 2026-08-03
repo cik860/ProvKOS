@@ -1,0 +1,226 @@
+<https://w3id.org/def/ProvKOS> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/def/ProvKOS> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2004/02/skos/core> .
+<https://w3id.org/def/ProvKOS> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/prov-o-20130430> .
+<https://w3id.org/def/ProvKOS> <http://purl.org/dc/terms/creator> "Inkyung Choi" .
+<https://w3id.org/def/ProvKOS> <http://purl.org/dc/terms/creator> "Jessica Yi-Yun Cheng" .
+<https://w3id.org/def/ProvKOS> <http://purl.org/dc/terms/title> "ProvKOS: An Application Profile for Documenting Provenance in Knowledge Organization Systems"@en .
+<https://w3id.org/def/ProvKOS> <http://www.w3.org/2000/01/rdf-schema#comment> "ProvKOS extends SKOS and PROV-O to represent the provenance of editorial activities in Knowledge Organization Systems (KOS): typed change activities, warrant structures, and the relationships among entities, activities, agents, and warrants. Revised in response to peer review (2026): class renamed to ProvKOS:ClassNumber; domain of ProvKOS:hasLabel broadened to prov:Entity; explicit PROV-O sub-property alignments; example individuals moved to separate data files."@en .
+<https://w3id.org/def/ProvKOS> <http://www.w3.org/2002/07/owl#versionInfo> "1.1" .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2004/02/skos/core#inScheme
+<http://www.w3.org/2004/02/skos/core#inScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/2004/02/skos/core#inScheme> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2004/02/skos/core#Concept> .
+# 
+# http://www.w3.org/ns/prov#generated
+<http://www.w3.org/ns/prov#generated> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.w3.org/ns/prov#invalidated
+<http://www.w3.org/ns/prov#invalidated> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.w3.org/ns/prov#wasAssociatedWith
+<http://www.w3.org/ns/prov#wasAssociatedWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.w3.org/ns/prov#wasAttributedTo
+<http://www.w3.org/ns/prov#wasAttributedTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#wasAttributedTo> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Entity> .
+# 
+# http://www.w3.org/ns/prov#wasGeneratedBy
+<http://www.w3.org/ns/prov#wasGeneratedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.w3.org/ns/prov#wasInfluencedBy
+<http://www.w3.org/ns/prov#wasInfluencedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.w3.org/ns/prov#wasInvalidatedBy
+<http://www.w3.org/ns/prov#wasInvalidatedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.w3.org/ns/prov#wasRevisionOf
+<http://www.w3.org/ns/prov#wasRevisionOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# https://w3id.org/def/ProvKOS#cite
+<https://w3id.org/def/ProvKOS#cite> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/ProvKOS#cite> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/ProvKOS#Warrant> .
+<https://w3id.org/def/ProvKOS#cite> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/ProvKOS#Warrant> .
+<https://w3id.org/def/ProvKOS#cite> <http://www.w3.org/2000/01/rdf-schema#label> "cite"@en .
+<https://w3id.org/def/ProvKOS#cite> <http://www.w3.org/2004/02/skos/core#definition> "A Warrant cites another Warrant, enabling the construction of warrant chains across heterogeneous evidence types (e.g., a Document citing a ConceptScheme that cites Literature)."@en .
+# 
+# https://w3id.org/def/ProvKOS#hasLabel
+<https://w3id.org/def/ProvKOS#hasLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/ProvKOS#hasLabel> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Entity> .
+<https://w3id.org/def/ProvKOS#hasLabel> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2008/05/skos-xl#Label> .
+<https://w3id.org/def/ProvKOS#hasLabel> <http://www.w3.org/2000/01/rdf-schema#label> "hasLabel"@en .
+<https://w3id.org/def/ProvKOS#hasLabel> <http://www.w3.org/2004/02/skos/core#definition> "A KOS entity (e.g., a class number in a classification system, or an authority record in a compiled vocabulary) has one or more associated human-readable labels. Preferred and alternative labels can be distinguished using skosxl:prefLabel and skosxl:altLabel for tracking changes to all types of labels."@en .
+# 
+# https://w3id.org/def/ProvKOS#wasAuthorizedBy
+<https://w3id.org/def/ProvKOS#wasAuthorizedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/ProvKOS#wasAuthorizedBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasGeneratedBy> .
+<https://w3id.org/def/ProvKOS#wasAuthorizedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/ProvKOS#ClassNumber> .
+<https://w3id.org/def/ProvKOS#wasAuthorizedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Activity> .
+<https://w3id.org/def/ProvKOS#wasAuthorizedBy> <http://www.w3.org/2000/01/rdf-schema#label> "wasAuthorizedBy"@en .
+<https://w3id.org/def/ProvKOS#wasAuthorizedBy> <http://www.w3.org/2004/02/skos/core#definition> "An 'unassigned' class number is being used to represent a concept. Specific to classification systems in which class numbers persist as reusable containers."@en .
+# 
+# https://w3id.org/def/ProvKOS#wasDeprecatedBy
+<https://w3id.org/def/ProvKOS#wasDeprecatedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/ProvKOS#wasDeprecatedBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasInvalidatedBy> .
+<https://w3id.org/def/ProvKOS#wasDeprecatedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/ProvKOS#ClassNumber> .
+<https://w3id.org/def/ProvKOS#wasDeprecatedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Activity> .
+<https://w3id.org/def/ProvKOS#wasDeprecatedBy> <http://www.w3.org/2000/01/rdf-schema#label> "wasDeprecatedBy"@en .
+<https://w3id.org/def/ProvKOS#wasDeprecatedBy> <http://www.w3.org/2004/02/skos/core#definition> "The existing class number is deprecated, becoming 'unassigned'. Specific to classification systems in which class numbers persist as reusable containers."@en .
+# 
+# https://w3id.org/def/ProvKOS#wasWarrantedBy
+<https://w3id.org/def/ProvKOS#wasWarrantedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/ProvKOS#wasWarrantedBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasInfluencedBy> .
+<https://w3id.org/def/ProvKOS#wasWarrantedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Activity> .
+<https://w3id.org/def/ProvKOS#wasWarrantedBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/ProvKOS#Warrant> .
+<https://w3id.org/def/ProvKOS#wasWarrantedBy> <http://www.w3.org/2000/01/rdf-schema#label> "wasWarrantedBy"@en .
+<https://w3id.org/def/ProvKOS#wasWarrantedBy> <http://www.w3.org/2004/02/skos/core#definition> "The Activity was performed based on an editorial Warrant."@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2008/05/skos-xl#literalForm
+<http://www.w3.org/2008/05/skos-xl#literalForm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.w3.org/2008/05/skos-xl#literalForm> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2008/05/skos-xl#Label> .
+<http://www.w3.org/2008/05/skos-xl#literalForm> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<http://www.w3.org/2008/05/skos-xl#literalForm> <http://www.w3.org/2000/01/rdf-schema#label> "literalForm"@en .
+# 
+# http://www.w3.org/ns/prov#endedAtTime
+<http://www.w3.org/ns/prov#endedAtTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+# 
+# http://www.w3.org/ns/prov#startedAtTime
+<http://www.w3.org/ns/prov#startedAtTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/2004/02/skos/core#Concept> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/def/ProvKOS#Warrant> .
+<http://www.w3.org/2004/02/skos/core#Concept> <http://www.w3.org/2004/02/skos/core#definition> "Within the scope of this application profile, any SKOS concept can serve as a warrant for editorial decision making (e.g., a concept in an external vocabulary such as Homosaurus supporting a label change)."@en .
+# 
+# http://www.w3.org/2004/02/skos/core#ConceptScheme
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/def/ProvKOS#Warrant> .
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> <http://www.w3.org/2004/02/skos/core#definition> "Within the scope of this application profile, any SKOS concept scheme can serve as a warrant for editorial decision making (e.g., ICD-11 or a national authority file supporting a change)."@en .
+# 
+# http://www.w3.org/2008/05/skos-xl#Label
+<http://www.w3.org/2008/05/skos-xl#Label> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/2008/05/skos-xl#Label> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<http://www.w3.org/2008/05/skos-xl#Label> <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/def/ProvKOS#ClassNumber> .
+<http://www.w3.org/2008/05/skos-xl#Label> <http://www.w3.org/2000/01/rdf-schema#label> "Label"@en .
+<http://www.w3.org/2008/05/skos-xl#Label> <http://www.w3.org/2004/02/skos/core#definition> "The class skosxl:Label is a special class of lexical entities. An instance of the class skosxl:Label is a resource and may be named with a URI. An instance of the class skosxl:Label has a single literal form. (from SKOS-XL)"@en .
+# 
+# http://www.w3.org/ns/prov#Activity
+<http://www.w3.org/ns/prov#Activity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Activity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+# 
+# http://www.w3.org/ns/prov#Agent
+<http://www.w3.org/ns/prov#Agent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Agent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+# 
+# http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Entity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+# 
+# http://www.w3.org/ns/prov#Organization
+<http://www.w3.org/ns/prov#Organization> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Organization> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Agent> .
+# 
+# http://www.w3.org/ns/prov#Person
+<http://www.w3.org/ns/prov#Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Person> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Agent> .
+# 
+# http://www.w3.org/ns/prov#SoftwareAgent
+<http://www.w3.org/ns/prov#SoftwareAgent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#SoftwareAgent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Agent> .
+# 
+# https://w3id.org/def/ProvKOS#ClassNumber
+<https://w3id.org/def/ProvKOS#ClassNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#ClassNumber> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<https://w3id.org/def/ProvKOS#ClassNumber> <http://www.w3.org/2000/01/rdf-schema#label> "Class Number"@en .
+<https://w3id.org/def/ProvKOS#ClassNumber> <http://www.w3.org/2004/02/skos/core#definition> "ClassNumber is a numeric or alphanumeric notation to represent a concept. A concept is defined as a unit of thought, specific ideas or meanings established within a KOS. ClassNumber is assignable to classify information resources. An instance of ClassNumber may be named with a URI."@en .
+# 
+# https://w3id.org/def/ProvKOS#Document
+<https://w3id.org/def/ProvKOS#Document> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#Document> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/def/ProvKOS#Warrant> .
+<https://w3id.org/def/ProvKOS#Document> <http://www.w3.org/2000/01/rdf-schema#label> "Document"@en .
+<https://w3id.org/def/ProvKOS#Document> <http://www.w3.org/2004/02/skos/core#definition> "Documents to record editorial process which include proposals of changes, discussions of proposals, and suggested changes and their impacts."@en .
+# 
+# https://w3id.org/def/ProvKOS#Expansion
+<https://w3id.org/def/ProvKOS#Expansion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#Expansion> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Activity> .
+<https://w3id.org/def/ProvKOS#Expansion> <http://www.w3.org/2000/01/rdf-schema#label> "Expansion"@en .
+<https://w3id.org/def/ProvKOS#Expansion> <http://www.w3.org/2004/02/skos/core#definition> "An expansion is when a concept is extended and the class number moves down to the narrower hierarchy."@en .
+# 
+# https://w3id.org/def/ProvKOS#Literature
+<https://w3id.org/def/ProvKOS#Literature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#Literature> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/def/ProvKOS#Warrant> .
+<https://w3id.org/def/ProvKOS#Literature> <http://www.w3.org/2000/01/rdf-schema#label> "Literature"@en .
+<https://w3id.org/def/ProvKOS#Literature> <http://www.w3.org/2004/02/skos/core#definition> "Citable literature providing evidence warranted for editorial decision making."@en .
+# 
+# https://w3id.org/def/ProvKOS#Relocation
+<https://w3id.org/def/ProvKOS#Relocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#Relocation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Activity> .
+<https://w3id.org/def/ProvKOS#Relocation> <http://www.w3.org/2000/01/rdf-schema#label> "Relocation"@en .
+<https://w3id.org/def/ProvKOS#Relocation> <http://www.w3.org/2004/02/skos/core#definition> "A relocation is moving a concept from a class number to another class number; this movement is outside of the hierarchical tree."@en .
+# 
+# https://w3id.org/def/ProvKOS#Replacement
+<https://w3id.org/def/ProvKOS#Replacement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#Replacement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Activity> .
+<https://w3id.org/def/ProvKOS#Replacement> <http://www.w3.org/2000/01/rdf-schema#label> "Replacement"@en .
+<https://w3id.org/def/ProvKOS#Replacement> <http://www.w3.org/2004/02/skos/core#definition> "A replacement is having a label replaced with another label."@en .
+# 
+# https://w3id.org/def/ProvKOS#Truncation
+<https://w3id.org/def/ProvKOS#Truncation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#Truncation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Activity> .
+<https://w3id.org/def/ProvKOS#Truncation> <http://www.w3.org/2000/01/rdf-schema#label> "Truncation"@en .
+<https://w3id.org/def/ProvKOS#Truncation> <http://www.w3.org/2004/02/skos/core#altLabel> "Discontinuation"@en .
+<https://w3id.org/def/ProvKOS#Truncation> <http://www.w3.org/2004/02/skos/core#definition> "A truncation is having a concept generalized, thus the class number moves up to the broader hierarchy."@en .
+# 
+# https://w3id.org/def/ProvKOS#Warrant
+<https://w3id.org/def/ProvKOS#Warrant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/ProvKOS#Warrant> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/def/ProvKOS#Warrant> <http://www.w3.org/2000/01/rdf-schema#label> "Warrant"@en .
+<https://w3id.org/def/ProvKOS#Warrant> <http://www.w3.org/2004/02/skos/core#definition> "Any identifiable sources providing evidence warranted for editorial decision making."@en .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
